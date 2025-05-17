@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-17 08:09:33.224619",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "currency",
+  "deposit",
+  "column_break_gjos",
+  "total_credit_limit",
+  "used_credit_limit",
+  "available_credit_limit"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "deposit",
+   "fieldtype": "Float",
+   "label": "Deposit",
+   "precision": "0"
+  },
+  {
+   "fieldname": "column_break_gjos",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_credit_limit",
+   "fieldtype": "Float",
+   "label": "Total Credit Limit",
+   "precision": "0"
+  },
+  {
+   "fieldname": "available_credit_limit",
+   "fieldtype": "Float",
+   "label": "Available Credit Limit",
+   "precision": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "used_credit_limit",
+   "fieldtype": "Float",
+   "label": "Used Credit Limit",
+   "non_negative": 1,
+   "precision": "0"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-05-17 11:00:28.176533",
+ "modified_by": "Administrator",
+ "module": "Tender",
+ "name": "Tender Credit Limit",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

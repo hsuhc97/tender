@@ -8,19 +8,20 @@ app_license = "agpl-3.0"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "tender",
-# 		"logo": "/assets/tender/logo.png",
-# 		"title": "Tender",
-# 		"route": "/tender",
-# 		"has_permission": "tender.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "tender",
+		"logo": "/assets/tender/logo.png",
+		"title": "Tender",
+		"route": "/tender",
+		"has_permission": "tender.api.permission.has_app_permission"
+	}
+]
 
+develop_version = "1.0.0"
 # Includes in <head>
 # ------------------
 
