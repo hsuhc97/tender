@@ -12,6 +12,7 @@
   "bridged_from",
   "bid_type",
   "column_break_pngw",
+  "index",
   "title",
   "sub_title",
   "close_time",
@@ -228,12 +229,19 @@
    "label": "Bid Type",
    "options": "Sealed\nOpen",
    "read_only": 1
+  },
+  {
+   "fieldname": "index",
+   "fieldtype": "Data",
+   "label": "Index",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-17 04:49:28.958730",
+ "modified": "2025-05-17 12:05:29.544420",
  "modified_by": "Administrator",
  "module": "Tender",
  "name": "Tender Lot",

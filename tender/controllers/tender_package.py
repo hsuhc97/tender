@@ -135,19 +135,27 @@ def tender_lot_import_complete(tender_package):
 def import_tender_lot(tender_package, rows, template):
     tender_lot = frappe.new_doc("Tender Lot")
     tender_lot.tender_package = tender_package.name
-    
+    tender_lot.index = get_tender_lot_index(rows, template)
     for row in rows:
-        lot_item = import_tender_lot_item(row, template)
+        lot_item = get_tender_lot_item(row, template)
         tender_lot.append("lot_items", lot_item)
     tender_lot.save()
 
+
+def get_tender_lot_index(rows, template):
+    local_vars = {
+        "rows": rows,
+    }
+    exec(template.index_script, globals(), local_vars)
+    return local_vars["index"]
     
-def import_tender_lot_item(row, template):
+
+def get_tender_lot_item(row, template):
     local_vars = {
         "row": row,
         "template": template,
     }
-    exec(template.script, globals(), local_vars)
+    exec(template.item_script, globals(), local_vars)
     item_name = local_vars["item_name"]
     quantity = local_vars["quantity"]
     grade = local_vars["grade"]

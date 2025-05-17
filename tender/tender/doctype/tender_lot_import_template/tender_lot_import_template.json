@@ -14,7 +14,8 @@
   "header_row_mark",
   "index_of_group_cell",
   "section_break_oedb",
-  "script"
+  "index_script",
+  "item_script"
  ],
  "fields": [
   {
@@ -68,15 +69,20 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "script",
+   "fieldname": "item_script",
    "fieldtype": "Code",
-   "label": "Script"
+   "label": "Item Script"
+  },
+  {
+   "fieldname": "index_script",
+   "fieldtype": "Code",
+   "label": "Index Script"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-17 11:43:09.690213",
+ "modified": "2025-05-17 12:03:43.665559",
  "modified_by": "Administrator",
  "module": "Tender",
  "name": "Tender Lot Import Template",
