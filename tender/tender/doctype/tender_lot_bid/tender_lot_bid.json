@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-15 12:41:04.730619",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_vzc6",
+  "tender_lot",
+  "status",
+  "column_break_rzfk",
+  "price",
+  "currency",
+  "currency_exchange_rate",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_vzc6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tender_lot",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tender Lot",
+   "options": "Tender Lot",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Submitted\nRejected"
+  },
+  {
+   "fieldname": "column_break_rzfk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "price",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Price",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "currency_exchange_rate",
+   "fieldtype": "Float",
+   "label": "Currency Exchange Rate",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tender Lot Bid",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-05-17 11:43:23.883542",
+ "modified_by": "Administrator",
+ "module": "Tender",
+ "name": "Tender Lot Bid",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

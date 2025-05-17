@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-15 15:05:11.905822",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tender_lot",
+  "user",
+  "tender_package",
+  "status",
+  "is_watching",
+  "column_break_whjc",
+  "has_bid",
+  "bid_price",
+  "bid_price_currency",
+  "column_break_dwjv",
+  "tender_lot_currency",
+  "exchange_rate",
+  "converted_price",
+  "column_break_mqas",
+  "has_pending_bid",
+  "pending_bid_price",
+  "pending_bid_price_currency"
+ ],
+ "fields": [
+  {
+   "fieldname": "tender_lot",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tender Lot",
+   "options": "Tender Lot",
+   "read_only": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "read_only": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "tender_lot.tender_package",
+   "fieldname": "tender_package",
+   "fieldtype": "Link",
+   "label": "Tender Package",
+   "options": "Tender Package",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Winning\nLosing\nLosing Internal\nWon\nLost",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_watching",
+   "fieldtype": "Check",
+   "label": "Is Watching",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_whjc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_bid",
+   "fieldtype": "Check",
+   "label": "Has Bid",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.has_bid == 1",
+   "fieldname": "bid_price",
+   "fieldtype": "Float",
+   "label": "Bid Price",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.has_bid == 1",
+   "fieldname": "bid_price_currency",
+   "fieldtype": "Link",
+   "label": "Bid Price Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_dwjv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "tender_lot.currency",
+   "fieldname": "tender_lot_currency",
+   "fieldtype": "Link",
+   "label": "Tender Lot Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate"
+  },
+  {
+   "fieldname": "converted_price",
+   "fieldtype": "Float",
+   "label": "Converted Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_mqas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_pending_bid",
+   "fieldtype": "Check",
+   "label": "Has Pending Bid",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.has_pending_bid == 1",
+   "fieldname": "pending_bid_price",
+   "fieldtype": "Float",
+   "label": "Pending Bid Price",
+   "precision": "2"
+  },
+  {
+   "depends_on": "eval:doc.has_pending_bid == 1",
+   "fieldname": "pending_bid_price_currency",
+   "fieldtype": "Link",
+   "label": "Pending Bid Currency",
+   "options": "Currency"
+  }
+ ],
+ "grid_page_length": 50,
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-05-17 11:42:19.366059",
+ "modified_by": "Administrator",
+ "module": "Tender",
+ "name": "Tender Lot User",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

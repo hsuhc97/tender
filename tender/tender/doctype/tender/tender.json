@@ -1,0 +1,169 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TD-{#####}",
+ "creation": "2025-05-13 19:28:03.960578",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tender_type",
+  "supplier",
+  "tender_name",
+  "bid_type",
+  "currency",
+  "column_break_esik",
+  "tender_image",
+  "description",
+  "bridge_settings_tab",
+  "mark_up_strategy",
+  "mark_up_value",
+  "mark_up_percent",
+  "bid_settings_tab",
+  "section_break_aiuw",
+  "enforce_bid_cap",
+  "bid_cap_margin"
+ ],
+ "fields": [
+  {
+   "fieldname": "tender_type",
+   "fieldtype": "Select",
+   "label": "Tender Type",
+   "options": "External\nInternal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "tender_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tender Name",
+   "reqd": 1
+  },
+  {
+   "default": "Open",
+   "fieldname": "bid_type",
+   "fieldtype": "Select",
+   "label": "Bid Type",
+   "options": "Open\nSealed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_esik",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tender_image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "bridge_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Bridge Settings"
+  },
+  {
+   "default": "No Mark Up",
+   "fieldname": "mark_up_strategy",
+   "fieldtype": "Select",
+   "label": "Mark Up Strategy",
+   "options": "No Mark Up\nFixed\nPercentage"
+  },
+  {
+   "depends_on": "eval:doc.mark_up_strategy == 'Fixed'",
+   "fieldname": "mark_up_value",
+   "fieldtype": "Int",
+   "label": "Mark Up Value",
+   "mandatory_depends_on": "eval:doc.mark_up_strategy == 'Fixed'"
+  },
+  {
+   "depends_on": "eval:doc.mark_up_strategy == 'Percentage'",
+   "fieldname": "mark_up_percent",
+   "fieldtype": "Percent",
+   "label": "Mark Up Percent",
+   "mandatory_depends_on": "eval:doc.mark_up_strategy == 'Percentage'",
+   "non_negative": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "bid_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Bid Settings"
+  },
+  {
+   "fieldname": "section_break_aiuw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enforce_bid_cap",
+   "fieldtype": "Check",
+   "label": "Enforce Bid Cap",
+   "options": "1"
+  },
+  {
+   "default": "0.0",
+   "depends_on": "eval:doc.enforce_bid_cap == 1",
+   "description": "(%)percent of bid cap margin",
+   "fieldname": "bid_cap_margin",
+   "fieldtype": "Percent",
+   "label": "Bid Cap Margin",
+   "non_negative": 1,
+   "precision": "1",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "image_field": "tender_image",
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Tender Package",
+   "link_fieldname": "tender"
+  }
+ ],
+ "modified": "2025-05-17 11:42:30.336192",
+ "modified_by": "Administrator",
+ "module": "Tender",
+ "name": "Tender",
+ "naming_rule": "Expression",
+ "owner": "hcxu0814@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "tender_name"
+}
