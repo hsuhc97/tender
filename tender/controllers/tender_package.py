@@ -1,5 +1,6 @@
 import frappe
 import os
+import json
 import traceback
 import requests
 import pandas as pd
@@ -182,8 +183,8 @@ def get_tender_lot_item(row, template):
     else:
         item = frappe.get_doc("Item", item_code[0].original_value)
     # 除了标准的item_code外，还有可能通过分词拿到属性值
-    attributes = []
-    item_attributes = tokenizerResult["Item Attribute"]
+    attributes = {}
+    item_attributes = tokenizerResult.get("Item Attribute")
     if (item_attributes is not None):
         for item_attribute in item_attributes:
             attribute_name = item_attribute.item_attribute
@@ -195,7 +196,7 @@ def get_tender_lot_item(row, template):
         "quantity": quantity,
         "grade": grade,
         "lock_condition": lock_condition,
-        "attributes": attributes,
+        "attributes": json.dumps(attributes),
     }
     
     
@@ -312,7 +313,7 @@ def tokenizer(tokens):
             if concatenated_tokens.lower() == token_group.original_value.lower():
                 if token_group.type not in result:
                     result[token_group.type] = []
-                result[token_group.type].append([token_group])
+                result[token_group.type].append(token_group)
                 index += token_number
                 matched = True
                 break

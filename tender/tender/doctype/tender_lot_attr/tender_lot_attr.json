@@ -1,0 +1,42 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-19 20:49:27.769701",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attribute_name",
+  "attribute_value"
+ ],
+ "fields": [
+  {
+   "fieldname": "attribute_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attribute Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "attribute_value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attribute Value",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-05-19 20:52:26.551948",
+ "modified_by": "Administrator",
+ "module": "Tender",
+ "name": "Tender Lot Attr",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

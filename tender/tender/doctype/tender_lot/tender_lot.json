@@ -23,6 +23,7 @@
   "grade",
   "lock_condition",
   "lot_items",
+  "attributes",
   "dashboard_tab",
   "defaults_section",
   "currency",
@@ -236,12 +237,19 @@
    "label": "Index",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "attributes",
+   "fieldtype": "Table",
+   "label": "Attributes",
+   "options": "Tender Lot Attr",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-17 12:05:29.544420",
+ "modified": "2025-05-19 20:52:17.314039",
  "modified_by": "Administrator",
  "module": "Tender",
  "name": "Tender Lot",
