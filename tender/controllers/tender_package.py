@@ -134,6 +134,9 @@ def tender_lot_import_complete(tender_package):
 
 
 def import_tender_lot(tender_package, rows, template):
+    if (skip_tender_lot(rows, template)):
+        return
+
     tender_lot = frappe.new_doc("Tender Lot")
     tender_lot.tender_package = tender_package.name
     tender_lot.index = get_tender_lot_index(rows, template)
@@ -142,6 +145,15 @@ def import_tender_lot(tender_package, rows, template):
         tender_lot.append("lot_items", lot_item)
     tender_lot.save()
 
+
+def skip_tender_lot(rows, template):
+    if (template.skip_script is None):
+        return False
+    local_vars = {
+        "rows": rows,
+    }
+    exec(template.skip_script, globals(), local_vars)
+    return local_vars["skip"]
 
 def get_tender_lot_index(rows, template):
     local_vars = {
@@ -298,7 +310,7 @@ def tokenizer(tokens):
             filters={
                 "first_token": current_token,
             },
-            fields=["token_number", "original_value", "type"],
+            fields=["token_number", "original_value", "item_attribute", "type"],
             order_by="token_number desc",
         )
         matched = False
