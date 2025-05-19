@@ -161,7 +161,7 @@ def get_tender_lot_item(row, template):
     grade = local_vars["grade"]
     lock_condition = local_vars["lock_condition"]
     # 把item_name做分词，拿到标准的item_code
-    tokenizerResult = tokenizer(item_name)
+    tokenizerResult = tokenizer(item_name.split(" "))
     item_code = tokenizerResult.get("Item Code")
     if (item_code is None):
         # 如果拿不到标准的item_code，则创建一个新的非标item
@@ -181,12 +181,21 @@ def get_tender_lot_item(row, template):
         raise RuntimeError(f"get ambiguous item code[{item_code}] from: {item_name}")
     else:
         item = frappe.get_doc("Item", item_code[0].original_value)
+    # 除了标准的item_code外，还有可能通过分词拿到属性值
+    attributes = []
+    item_attributes = tokenizerResult["Item Attribute"]
+    if (item_attributes is not None):
+        for item_attribute in item_attributes:
+            attribute_name = item_attribute.item_attribute
+            attributes[attribute_name] = item_attribute.original_value
+
     # 返回lot_item
     return {
         "item": item.item_code,
         "quantity": quantity,
         "grade": grade,
         "lock_condition": lock_condition,
+        "attributes": attributes,
     }
     
     
@@ -303,7 +312,7 @@ def tokenizer(tokens):
             if concatenated_tokens.lower() == token_group.original_value.lower():
                 if token_group.type not in result:
                     result[token_group.type] = []
-                result[token_group.type].append(token_group)
+                result[token_group.type].append([token_group])
                 index += token_number
                 matched = True
                 break
