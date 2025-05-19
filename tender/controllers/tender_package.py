@@ -193,14 +193,14 @@ def get_tender_lot_item(row, template):
     elif (len(item_code) > 1):
         raise RuntimeError(f"get ambiguous item code[{item_code}] from: {item_name}")
     else:
-        item = frappe.get_doc("Item", item_code[0].original_value)
+        item = frappe.get_doc("Item", item_code[0].replacement)
     # 除了标准的item_code外，还有可能通过分词拿到属性值
     attributes = {}
     item_attributes = tokenizerResult.get("Item Attribute")
     if (item_attributes is not None):
         for item_attribute in item_attributes:
             attribute_name = item_attribute.item_attribute
-            attributes[attribute_name] = item_attribute.original_value
+            attributes[attribute_name] = item_attribute.replacement
 
     # 返回lot_item
     return {
@@ -310,7 +310,7 @@ def tokenizer(tokens):
             filters={
                 "first_token": current_token,
             },
-            fields=["token_number", "original_value", "item_attribute", "type"],
+            fields=["token_number", "original_value", "replacement", "item_attribute", "type"],
             order_by="token_number desc",
         )
         matched = False
